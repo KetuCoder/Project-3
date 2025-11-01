@@ -1,0 +1,37 @@
+Resume Parser & Skill Matcher for Recruiters (7 days)
+Overview:
+Develop a backend system that parses resumes (PDF format), extracts key information (skills, experience, education), and matches them against 
+job descriptions using AI.
+
+Detailed Tasks:
+Resume Extraction:
+
+1.Upload resumes to Amazon S3.
+2.Trigger AWS Textract to extract text from PDF files.
+3.Skill Parsing Logic:
+4.Use Amazon Comprehend or write custom NLP logic in Lambda to extract:
+
+
+Keywords (skills).
+Job titles.
+Experience duration.
+
+Job Matching:
+Store job descriptions in DynamoDB.
+Use Jaccard similarity or cosine similarity to match candidates with suitable jobs.
+
+Result Presentation:
+Build a simple recruiter dashboard to view matches and parsed data.
+Allow download of candidate reports.
+
+
+Security & Scaling:
+S3 permissions controlled via IAM.
+Queue parsing tasks with SQS if uploads are high in volume.
+
+
+Deliverables:
+Resume upload + parsing pipeline.
+
+Sample parsed outputs + matching logic explanation.
+Recruiter dashboard with candidate-job matches.
