@@ -34,13 +34,24 @@ export const uploadResume = async (file) => {
 };
 
 // Simulated DynamoDB Fetch
-export const fetchParsedResumes = async () => {
-  // Simulate API call delay
-  await new Promise((res) => setTimeout(res, 1000));
+// export const fetchParsedResumes = async () => {
+//   // Simulate API call delay
+//   await new Promise((res) => setTimeout(res, 1000));
 
-  const candidate = JSON.parse(localStorage.getItem("candidate"));
-  return candidate ? [candidate] : [];
-};
+//   const candidate = JSON.parse(localStorage.getItem("candidate"));
+//   return candidate ? [candidate] : [];
+// };
+
+export async function fetchParsedResumes() {
+  const response = await fetch("https://ukvcgy4aaf.execute-api.us-east-1.amazonaws.com/parser/resumeparser", {
+    method: "GET", // or POST if sending filters
+  });
+  if (!response.ok) throw new Error("Failed to fetch resumes");
+  const data = await response.json();
+  return [data]; // return as array to match frontend map
+}
+
+
 
 export const verifyRecruiter = async (data) => {
   // Simulate backend login check
